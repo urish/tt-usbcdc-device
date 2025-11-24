@@ -28,6 +28,8 @@ jobs:
   gl_test:
     needs: gds
     runs-on: ubuntu-24.04
+    # We don't have a testbench for this project yet.
+    if: false
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
