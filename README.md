@@ -1,6 +1,8 @@
 ![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg) ![](../../workflows/fpga/badge.svg)
 
-# Tiny Tapeout Verilog Project Template
+# USB CDC (Serial) for Tiny Tapeout
+
+A simple wrapper around [tinyfpga_bx_usbserial](https://github.com/davidthings/tinyfpga_bx_usbserial), implementing a USB CDC serial port on Tiny Tapeout.
 
 - [Read the documentation for project](docs/info.md)
 

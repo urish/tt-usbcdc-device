@@ -1,20 +1,18 @@
-<!---
-
-This file is used to generate your project datasheet. Please fill in the information below and delete any unused
-sections.
-
-You can also include images in this folder and reference them in the markdown. Each image must be less than
-512 kb in size, and the combined size of all images must be less than 1 MB.
--->
-
 ## How it works
 
-Explain how your project works
+All the magic happens in https://github.com/davidthings/tinyfpga_bx_usbserial.
 
 ## How to test
 
-Explain how to use your project
+1. Connect `usb_p` and `usb_n` pins to D+ / D- USB pins either through 68 ohm resistors or directly (the resistors are recommended, but not mandatory).
+2. Connect a 1.5k ohm resistor between `dp_pu_o` and `usb_p` (D+).
+3. Set the clock frequency to 48 MHz.
 
-## External hardware
+The device should appear as a serial port on your computer, with vendor_id=1209 and product_id=5454 (https://pid.codes/1209/5454/).
+Data received from USB host will appear on the output pins (`rx`) when `rx_ready` goes high.
+You can send data to the USB device by waiting for `tx_ready` to go high,
+setting the input pins (`tx`) to the byte you'd like to transmit, and setting `tx_valid` high.
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+## External Hardware
+
+USB breakout board, 1.5k ohm resistor
