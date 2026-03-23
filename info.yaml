@@ -18,6 +18,7 @@ project:
     - "tt_um_usb_cdc.v"
     - "uart_rx.v"
     - "uart_tx.v"
+    - "demo_mode.v"
     - "usb_cdc/usb_cdc/bulk_endp.v"
     - "usb_cdc/usb_cdc/ctrl_endp.v"
     - "usb_cdc/usb_cdc/in_fifo.v"
@@ -30,7 +31,7 @@ project:
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
   # Inputs
-  ui[0]: ""
+  ui[0]: "demo_mode"
   ui[1]: ""
   ui[2]: ""
   ui[3]: "RX"

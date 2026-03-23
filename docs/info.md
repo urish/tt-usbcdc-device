@@ -11,6 +11,10 @@ A USB CDC to UART bridge, based on [tinyfpga_bx_usbserial](https://github.com/da
 
 The device should appear as a serial port on your computer, with vendor_id=1209 and product_id=5454 (https://pid.codes/1209/5454/). The baud rate for the UART interface is hardcoded at 115200.
 
+### Demo mode
+
+Set `ui_in[0]` high to enable demo mode. In this mode, the device sends "Tiny Tapeout!" over USB once per second. UART RX input is ignored while demo mode is active.
+
 ## External Hardware
 
 USB breakout board, 1.5k ohm resistor
