@@ -8,7 +8,7 @@ project:
   clock_hz:     48000000       # Clock frequency in Hz (or 0 if not applicable)
 
   # How many tiles your design occupies? A single tile is about 167x108 uM.
-  tiles: "1x2"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
+  tiles: "2x2"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
 
   # Your top module name must start with "tt_um_". Make it unique by including your github username:
   top_module:  "tt_um_urish_usb_cdc"
@@ -18,6 +18,7 @@ project:
     - "tt_um_usb_cdc.v"
     - "uart_rx.v"
     - "uart_tx.v"
+    - "demo_mode.v"
     - "usb_cdc/usb_cdc/bulk_endp.v"
     - "usb_cdc/usb_cdc/ctrl_endp.v"
     - "usb_cdc/usb_cdc/in_fifo.v"
@@ -30,7 +31,7 @@ project:
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
   # Inputs
-  ui[0]: ""
+  ui[0]: "demo_mode"
   ui[1]: ""
   ui[2]: ""
   ui[3]: "RX"

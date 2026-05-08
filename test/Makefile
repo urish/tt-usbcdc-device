@@ -6,7 +6,7 @@ SIM ?= icarus
 FST ?= -fst # Use more efficient FST format
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES = tt_um_usb_cdc.v uart_rx.v uart_tx.v \
+PROJECT_SOURCES = tt_um_usb_cdc.v uart_rx.v uart_tx.v demo_mode.v \
                   usb_cdc/usb_cdc/bulk_endp.v \
                   usb_cdc/usb_cdc/ctrl_endp.v \
                   usb_cdc/usb_cdc/in_fifo.v \

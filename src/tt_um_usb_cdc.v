@@ -35,7 +35,27 @@ module tt_um_urish_usb_cdc (
   wire uart_tx_en;
   wire uart_tx_busy;
   wire uart_rx_valid;
-  wire uart_rx_read;
+
+  /* Demo mode */
+  wire       demo_enable = ui_in[0];
+  wire [7:0] demo_data;
+  wire       demo_valid;
+  wire       usb_in_ready;
+
+  wire [7:0] usb_in_data  = demo_enable ? demo_data  : uart_rx_byte;
+  wire       usb_in_valid = demo_enable ? demo_valid  : uart_rx_valid;
+  wire       uart_rx_read = demo_enable ? 1'b0 : usb_in_ready;
+
+  demo_mode #(
+      .CLK_HZ(48_000_000)
+  ) u_demo (
+      .clk   (clk),
+      .rst_n (rst_n),
+      .enable(demo_enable),
+      .ready (usb_in_ready),
+      .data  (demo_data),
+      .valid (demo_valid)
+  );
 
   /* UART */
   uart_tx #(
@@ -79,14 +99,14 @@ module tt_um_urish_usb_cdc (
       .clk_i(clk),
       .rstn_i(rst_n),
       .out_ready_i(~uart_tx_busy),
-      .in_data_i(uart_rx_byte),
-      .in_valid_i(uart_rx_valid),
+      .in_data_i(usb_in_data),
+      .in_valid_i(usb_in_valid),
       .dp_rx_i(uio_in[0]),
       .dn_rx_i(uio_in[1]),
 
       .out_data_o(uart_tx_byte),
       .out_valid_o(uart_tx_en),
-      .in_ready_o(uart_rx_read),
+      .in_ready_o(usb_in_ready),
       .dp_pu_o(uio_out[2]),
       .tx_en_o(usb_tx_en),
       .dp_tx_o(uio_out[0]),
